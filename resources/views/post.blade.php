@@ -5,18 +5,17 @@
 <section class="container-fluid content">
         <!-- Categorías -->
         <div class="row justify-content-center">
-            <div class="col-10 col-md-12">
-                <nav class="text-center my-5">
-                    <a href="/" class="mx-3 pb-3 link-category d-block d-md-inline {{ isset($categoryIdSelected)? '': 'selected-category' }}" >Todas</a>
-                    
-                    @foreach ($categories as $category)
-                        <a href="{{route('posts.category', $category->name)}}" class="mx-3 pb-3 link-category d-block d-md-inline {{ (isset($categoryIdSelected) && $category->id == $categoryIdSelected)? 'selected-category':'' }}" >{{$category->name}}</a>
-                    @endforeach
-                </nav>
-            </div>
+        <div class="col-10 col-md-12">
+            <nav class="text-center my-5">
+                <a href="/" class="mx-3 pb-3 link-category d-block d-md-inline {{ isset($categoryIdSelected)? '': 'selected-category' }}">Todas</a>
+                @foreach ($categories as $category)
+                <a href="{{route('posts.category', $category->name)}}" class="mx-3 pb-3 link-category d-block d-md-inline {{ (isset($categoryIdSelected) && $category->id == $categoryIdSelected)? 'selected-category':'' }}">{{$category->name}}</a>
+                @endforeach
+            </nav>
+        </div>
         </div>
     <!-- Contenido -->
-    <section class="container-fluid content py-5">
+    <div class="container-fluid content py-5">
         <div class="row">
             <!-- Post -->
             <div class="col-12 col-md-7">
@@ -53,5 +52,6 @@
                 @endforeach
             </div>
         </div>
+    </div> 
     </section>
     @endsection

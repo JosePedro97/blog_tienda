@@ -6,7 +6,7 @@
         <!--CATEGORIAS SELECT-->
         <div class="col-10 col-md-12">
             <nav class="text-center my-5">
-                <a href="/" class="mx-3 pb-3 link-category d-block d-md-inline selected-category {{ isset($categoryIdSelected)? '': 'selected-category' }}">Todas</a>
+                <a href="/" class="mx-3 pb-3 link-category d-block d-md-inline {{ isset($categoryIdSelected)? '': 'selected-category' }}">Todas</a>
                 @foreach ($categories as $category)
                 <a href="{{route('posts.category', $category->name)}}" class="mx-3 pb-3 link-category d-block d-md-inline {{ (isset($categoryIdSelected) && $category->id == $categoryIdSelected)? 'selected-category':'' }}">{{$category->name}}</a>
                 @endforeach
@@ -44,12 +44,12 @@
                     </div>
                     @endforeach
                 </div>
-                
-                {{ $posts->links()}}
+                <div class="d-flex justify-content-center">
+                {{$posts->links()}}
+                </div>
+                <br>
             </div>
         </div>
     </div>
-
-
 </section>
 @endsection

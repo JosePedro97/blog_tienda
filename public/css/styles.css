@@ -64,3 +64,7 @@ hr {
   width: 720px;
   height: 450px;
 }
+.centrado {
+  margin-left: auto;
+	margin-right: auto;
+}

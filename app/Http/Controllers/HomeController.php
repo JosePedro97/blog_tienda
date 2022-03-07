@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Post;
+use Illuminate\Pagination\Paginator;
 
 class HomeController extends Controller
 {
@@ -23,17 +24,19 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function tologin(){
-        return view('admin/beginAdmin');
-    }
     public function index()
     {
         $categories = Category::all();
-        $posts = Post::orderBy('id', 'DESC')->simplePaginate(3);
-        return view('ccc', [
-            'categories' => $categories,
-            'posts' => $posts
-        ]);
+        $posts = Post::orderBy('id', 'DESC')->Paginate(6);
+        $contador = count($posts);
+        if($contador == 0){
+            return view('emptycategories');
+        }
+        Paginator::useBootstrap();
+         return view('ccc', [
+             'categories' => $categories,
+             'posts' => $posts
+         ]);
     }
 
     public function post($postid)
@@ -54,6 +57,7 @@ class HomeController extends Controller
         $category = Category::where('name', '=' ,$category)->first();
         $categoryIdSelected = $category->id;
         $posts = Post::where('category_id', '=', $categoryIdSelected)->paginate(6);
+        Paginator::useBootstrap();
         $contador = count($posts);
         if($contador == 0){
             return Redirect()->back()->with('menssage','La categoría '.$category->name.' aun no cuenta con entradas....');
