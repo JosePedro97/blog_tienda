@@ -18,7 +18,7 @@
         </div>
         
         <div class="col md-auto">
-       <img src="images/featureds/1646567026-shutterstock_526821523-630x420.jpg" alt="title">
+       <img src="images/message.jpg" alt="title">
         </div>
     </div>
 
